@@ -1,26 +1,10 @@
-# ERNI Stream Downloader for macOS
+# ERNI Stream Downloader for Windows
 
-macOS-версия ERNI Stream Downloader `1.2.3`.
+Windows-версия ERNI Stream Downloader `1.2.4`.
 
-Приложение скачивает ваши YouTube-стримы/видео через `yt-dlp` и `ffmpeg`, а затем при необходимости делает совместимый `MP4` для просмотра и монтажных программ.
+Приложение скачивает ваши YouTube-стримы/видео через `yt-dlp` и `ffmpeg`, а затем делает совместимый `MP4` для обычных плееров и VEGAS Pro.
 
 Используйте приложение только для своих видео или видео, на которые у вас есть разрешение.
-
-## Скачать готовое приложение
-
-Готовая macOS-версия уже лежит в репозитории:
-
-```text
-release/ERNI Stream Downloader macOS.zip
-```
-
-Скачайте zip, распакуйте его, перенесите `ERNI Stream Downloader.app` на рабочий стол или в `Applications` и откройте двойным кликом.
-
-Если macOS покажет предупреждение безопасности:
-
-1. Нажмите правой кнопкой по приложению.
-2. Выберите `Open`.
-3. Подтвердите запуск.
 
 ## Что делает
 
@@ -28,8 +12,8 @@ release/ERNI Stream Downloader macOS.zip
 - Поддерживает очередь: можно добавить несколько ссылок и скачать их подряд.
 - Поддерживает `Best available`, `1440p / 2K`, `1080p`, `720p`.
 - Поддерживает `MP4` и `MKV`.
-- Поддерживает понятные режимы:
-  - `Универсальный MP4 для всего` — самый безопасный вариант для плееров, телефонов, соцсетей и большинства монтажных программ;
+- Поддерживает режимы:
+  - `ВСЁ: максимально совместимый MP4` — главный preset “подойдёт куда угодно”: плееры, телефоны, соцсети, Premiere, DaVinci, CapCut, VEGAS, Final Cut;
   - `Смотреть в плеере (MP4, видео + звук)` — готовый файл для обычного просмотра;
   - `Монтаж: Premiere / DaVinci / CapCut` — универсальный MP4 для популярных редакторов;
   - `Монтаж: VEGAS Pro` — самый совместимый вариант для VEGAS;
@@ -38,40 +22,97 @@ release/ERNI Stream Downloader macOS.zip
 - Автоматически анализирует видео перед скачиванием: максимум качества, FPS, длительность и примерный размер.
 - Проверяет свободное место до начала скачивания.
 - Может обновлять `yt-dlp` из интерфейса.
-- Для монтажных и универсального `MP4` делает один готовый файл:
+- Для `MP4` делает совместимый файл:
   - H.264 video;
   - AAC audio;
-  - constant frame rate;
+  - CFR, constant frame rate;
   - 48 kHz stereo;
   - yuv420p.
-- Корректно работает с путями с пробелами, например `/Volumes/FLASH ERNI`.
-- Ведёт лог-файл для диагностики.
+- Это помогает избежать проблем “нет звука”, “нет картинки” и ошибок импорта в VEGAS Pro.
+- Ведёт лог-файл для диагностики, если скачивание или конвертация упали.
+- Проверяет YouTube-ссылку до запуска скачивания.
+- Проверяет свободное место перед MP4-конвертацией.
+- Имеет аккуратный desktop-интерфейс с карточками статуса, прогрессом, журналом и быстрым открытием логов.
 
-## Установка зависимостей
+## Для обычного пользователя
 
-На macOS должны быть установлены `yt-dlp` и `ffmpeg`.
-
-```bash
-brew install yt-dlp ffmpeg
-```
-
-## Запуск из кода
-
-```bash
-python3 app.py
-```
-
-## Сборка `.app`
-
-```bash
-chmod +x build_mac.sh
-./build_mac.sh
-```
-
-Готовое приложение появится здесь:
+Если у вас уже есть готовый installer:
 
 ```text
-dist/ERNI Stream Downloader.app
+ERNI Stream Downloader Setup.exe
+```
+
+Откройте его и установите приложение. Python, `yt-dlp` и `ffmpeg` устанавливать не нужно.
+
+Если у вас только portable-файл:
+
+```text
+ERNI Stream Downloader.exe
+```
+
+его тоже можно просто открыть. Python, `yt-dlp` и `ffmpeg` устанавливать не нужно.
+
+Если Windows SmartScreen покажет предупреждение:
+
+```text
+More info -> Run anyway
+```
+
+## Сборка `.exe`
+
+На компьютере, где собирается `.exe`, нужен Python 3.11+.
+
+Установите Python:
+
+```text
+https://www.python.org/downloads/windows/
+```
+
+Во время установки включите:
+
+```text
+Add python.exe to PATH
+```
+
+Откройте PowerShell в папке проекта и выполните:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\build_windows.ps1
+```
+
+Или из CMD:
+
+```cmd
+powershell -ExecutionPolicy Bypass -File build_windows.ps1
+```
+
+Готовый файл будет здесь:
+
+```text
+dist\ERNI Stream Downloader.exe
+```
+
+Его можно отправлять другим людям.
+
+## Сборка installer
+
+Для настоящего установщика поставьте Inno Setup:
+
+```powershell
+winget install JRSoftware.InnoSetup
+```
+
+Потом снова запустите:
+
+```powershell
+.\build_windows.ps1
+```
+
+Готовый installer будет здесь:
+
+```text
+installer-output\ERNI Stream Downloader Setup.exe
 ```
 
 ## Где лог
@@ -79,5 +120,15 @@ dist/ERNI Stream Downloader.app
 Если что-то пошло не так, приложение пишет лог сюда:
 
 ```text
-~/Library/Application Support/ERNI Stream Downloader/app.log
+%APPDATA%\ERNI Stream Downloader\app.log
+```
+
+Этот файл полезно прислать при отладке.
+
+## Пример настроек
+
+```text
+Quality: 1440p / 2K
+Format: MP4
+Temporary local folder: enabled
 ```
