@@ -9,6 +9,7 @@ python3 -m PyInstaller \
   --clean \
   --windowed \
   --name "ERNI Stream Downloader" \
+  --icon "assets/erni-icon.icns" \
   app.py
 
 echo "Built: dist/ERNI Stream Downloader.app"
