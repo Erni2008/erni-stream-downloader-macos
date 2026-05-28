@@ -1,6 +1,6 @@
 # ERNI Stream Downloader for macOS
 
-macOS-версия ERNI Stream Downloader.
+macOS-версия ERNI Stream Downloader `1.1.0`.
 
 Приложение скачивает ваши YouTube-стримы/видео через `yt-dlp` и `ffmpeg`, а затем делает совместимый `MP4` для обычных плееров и VEGAS Pro.
 
@@ -34,6 +34,9 @@ release/ERNI Stream Downloader macOS.zip
   - 48 kHz stereo;
   - yuv420p.
 - Корректно работает с путями с пробелами, например `/Volumes/FLASH ERNI`.
+- Ведёт лог-файл для диагностики, если скачивание или конвертация упали.
+- Проверяет YouTube-ссылку до запуска скачивания.
+- Проверяет свободное место перед MP4-конвертацией.
 
 ## Установка зависимостей
 
@@ -79,3 +82,13 @@ Download to temporary local folder first, then copy to selected drive
 ```
 
 Так видео сначала скачивается на локальный диск, а потом копируется на флешку или внешний диск.
+
+## Где лог
+
+Если что-то пошло не так, приложение пишет лог сюда:
+
+```text
+~/Library/Application Support/ERNI Stream Downloader/app.log
+```
+
+Этот файл полезно прислать при отладке.
