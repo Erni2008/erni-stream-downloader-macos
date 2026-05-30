@@ -1,6 +1,6 @@
 # ERNI Stream Downloader for macOS
 
-macOS-версия ERNI Stream Downloader `1.5.0`.
+macOS-версия ERNI Stream Downloader `1.6.0`.
 
 Приложение скачивает ваши видео через `yt-dlp` и `ffmpeg`, а затем при необходимости делает совместимый `MP4` для просмотра и монтажных программ.
 
@@ -23,6 +23,9 @@ release/ERNI Stream Downloader macOS.zip
 - Поддерживает очередь-таблицу: ссылка, платформа, статус, качество, примерный размер выбранного качества и прогресс.
 - Поддерживает drag-and-drop: можно перетащить ссылку или текст прямо в окно.
 - Поддерживает переключение интерфейса `RU / EN`.
+- Поддерживает `Smart preset`: приложение само предлагает режим под платформу.
+- Есть быстрые режимы `Original`, `Universal`, `Reels`, `Audio`.
+- Есть быстрые кнопки открыть папку сохранения и очистить лог.
 - Поддерживает `Best available`, `1440p / 2K`, `1080p`, `720p`.
 - Поддерживает режимы `Original quality`, `Best quality MP4`, `For editing: universal`, `For editing: VEGAS Pro`, `For editing: Premiere / DaVinci / CapCut`, `For editing: Final Cut / macOS`, `For TikTok / Reels / Shorts`, `For archive`, `Audio only`, `Thumbnail only`.
 - Автоматически анализирует видео перед скачиванием: платформа, название, thumbnail URL, максимум качества, FPS, codecs, есть ли звук/картинка, длительность и примерный размер именно выбранного качества.
