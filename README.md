@@ -25,7 +25,8 @@ release/ERNI Stream Downloader macOS.zip
 - Поддерживает переключение интерфейса `RU / EN`.
 - Поддерживает `Smart preset`: приложение само предлагает режим под платформу.
 - Есть быстрые режимы `Original`, `Universal`, `Reels`, `Audio`.
-- Есть быстрые кнопки открыть папку сохранения и очистить лог.
+- Интерфейс прокручивается колесом/трекпадом, поэтому всё доступно даже на меньшем экране.
+- Основные кнопки отделены от второстепенных инструментов, чтобы интерфейс не перегружал глаза.
 - Поддерживает `Best available`, `1440p / 2K`, `1080p`, `720p`.
 - Поддерживает режимы `Original quality`, `Best quality MP4`, `For editing: universal`, `For editing: VEGAS Pro`, `For editing: Premiere / DaVinci / CapCut`, `For editing: Final Cut / macOS`, `For TikTok / Reels / Shorts`, `For archive`, `Audio only`, `Thumbnail only`.
 - Автоматически анализирует видео перед скачиванием: платформа, название, thumbnail URL, максимум качества, FPS, codecs, есть ли звук/картинка, длительность и примерный размер именно выбранного качества.
